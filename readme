@@ -1,0 +1,55 @@
+//
+// Created by Chu-Hsuan Lin on 2022/3/3.
+//
+
+*** For personal reason, got approval from Professor Bruce to postpone the deadline to 3/28( additional 2 days) ***
+
+=== Project4 - Calibration and Augmented Reality ===
+https://wiki.khoury.northeastern.edu/display/~chuhsuanlin/Project+4+%3A+Calibration+and+Augmented+Reality
+
+#Built With
+Operating system: MacOS Monterey (12.1)
+IDE: CLion  https://www.jetbrains.com/clion/
+
+#Installation and Setup
+1. Install openCV
+2. Modify the CMakeLists.txt
+    find_package(OpenCV)
+    include_directories(${/usr/local/include/}) //location of your OpenCV
+3. Set up a camera, I use EpoCam here.
+    https://www.elgato.com/en/epoccam
+
+# Files in the project
+1. camera_calibration.cpp - calibrate camera and save parameters in to file
+2. object_projection.cpp - project 3D object and axis
+3. harris_corner.cpp - show harris corners
+4. aruco.cpp - aruco application
+5. txt_util.cpp - read and write txt file for camera parameters
+
+#Instructions for running the executables
+1. For task 1-3 : Run the camera_calibration.cpp
+    The video will  show the image with chessboard corners automatically
+    (1) key 's' : append the chessboard corner and point list for calibration
+                  and save the image with chessboard corners
+    (2) key 'c' : camera calibration
+                  save the camera matrix and distortion coefficient to txt file
+    (3) key 'q' : end the program
+
+2. For task 4-6 : Run the object_projection.cpp
+    (1) key 'p' : print out the rotation and translation data in real time
+    (2) key 'x' : project outside corners and 3D Axes, 4 corners are yellow and x,y,z axes are blue, green, red respectively
+    (3) key 'v' : draw  a cubic  (virtual object), the size of length, weight,height are 3,5,1 respectively
+    (4) key 's' : save the frame image to file
+    (5) key 'q' : end the program
+
+3. For task 7 : Run the harris_corner.cpp
+    Harris corners detection
+    (1) key 's' : save the frame image to file
+    (2) key 'q' : end the program
+
+4. Extension : ArUco Application, Run the aruco.cpp
+    If no aruco markers, please open the commend part 'prepare - read and save Aruco marker' at the begin of the code
+    There are 5 markers which are used in this project. ID 23,50,104,159,218
+    (1) key 'n' : show the ID number on the markers
+    (2) key 'x' : draw axes of markers
+    (3) key 'a' : project different images to different marker ids
